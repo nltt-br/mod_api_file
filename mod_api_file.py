@@ -1,7 +1,7 @@
 #!/usr/bin/env python3   
 #!-*- coding:utf-8 -*-
-# Autor: boladao
-# Add or Change API File
+# Autor: nltt_0x
+# Add or Change API File Key
 from time import sleep
 
 class MainChangeApiFile:
