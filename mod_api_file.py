@@ -2,25 +2,37 @@
 #!-*- coding:utf-8 -*-
 # Autor: nltt_0x
 # Add or Change API File Key
+
 from time import sleep
+from list_computers_and_rules_ips_output_all_clients_mod import *
+
+
+class CONST(object):
+    INFO_FILE = "info_client.txt"
+
+    def __setattr__(self, *_):
+        pass
 
 class MainChangeApiFile:
+
+	CONST = CONST()
 
 	def __init_(self):
 		pass
 
 	def add_api(self):
-		info_file = "info_client.txt"
+		
+		# info_file = CONST.INFO_FILE
 
-		print("Escrever File -> {} [Y/N]".format(info_file))
+		print("Escrever File -> {} [Y/N]".format(CONST.INFO_FILE))
 		i = input(str(": "))
 
 		if i.upper() == 'Y':
 			
-			info_file = "info_client.txt"
+			# info_file = CONST.INFO_FILE
 			stringfile = []
 
-			with open(info_file, 'r') as f:
+			with open(CONST.INFO_FILE, 'r') as f:
 				stringfile = f.readlines()	
 
 			console = input(str("Console: "))
@@ -29,12 +41,12 @@ class MainChangeApiFile:
 			string_end = "{},{}".format(console, api_key)
 			stringfile.append(string_end)	
 
-			with open(info_file, 'w') as f:
+			with open(CONST.INFO_FILE, 'w') as f:
 				for s in stringfile:
 					s = s.replace('\n', '')
 					f.write(s + "\n")
 
-			print("Write File -> {}".format(info_file))		
+			print("Write File -> {}".format(CONST.INFO_FILE))		
 
 			sleep(5)
 
@@ -65,17 +77,18 @@ class MainChangeApiFile:
 				sleep(5)
 		
 	def edit_api(self):
-		info_file = "info_client.txt"
+		# CONST = CONST()
+		# info_file = CONST.INFO_FILE
 
-		print("Escrever File -> {} [Y/N]".format(info_file))
+		print("Escrever File -> {} [Y/N]".format(CONST.INFO_FILE))
 		i = input(str(": "))
 
 		if i.upper() == 'Y':
 			
-			info_file = "info_client.txt"
+			# info_file = CONST.INFO_FILE
 			stringfile = []
 
-			with open(info_file, 'r') as f:
+			with open(CONST.INFO_FILE, 'r') as f:
 				stringfile = f.readlines()	
 
 			console = input(str("Console: "))
@@ -92,12 +105,12 @@ class MainChangeApiFile:
 
 				x+=1
 
-			with open(info_file, 'w') as f:
+			with open(CONST.INFO_FILE, 'w') as f:
 				for s in stringfile:
 					s = s.replace('\n', '')
 					f.write(s + "\n")
 
-			print("Write File -> {}".format(info_file))		
+			print("Write File -> {}".format(CONST.INFO_FILE))		
 
 			sleep(5)
 
@@ -139,6 +152,26 @@ class MainChangeApiFile:
 				print(e)
 				sleep(5)
 
+	def generate_ds_standlone(self):
+		host, api_version = get_data()
+		print("File -> {} [Y/N]".format(CONST.INFO_FILE))
+		in0 = input(str(": "))
+
+
+		if in0.upper() == 'Y':
+			file = CONST.INFO_FILE
+			main(file)
+
+		elif in0.upper() == 'N':
+			in01 = input(str("Novo Arquivo: "))
+
+			try:
+				main(in01)
+
+			except Exception as e:
+				print(e)
+
+
 while True:
 
 
@@ -150,6 +183,7 @@ while True:
 
 			[c] - Change API KEY File
 			[d] - Add API KEY File
+			[g] - Generate DS Standlone
 
 
 			###############
@@ -169,3 +203,6 @@ while True:
 
 	elif entrada.lower() == 'c':
 		main.edit_api()
+
+	elif entrada.lower() == 'g':
+		main.generate_ds_standlone()
