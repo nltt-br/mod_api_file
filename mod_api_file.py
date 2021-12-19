@@ -4,11 +4,9 @@
 # Add or Change API File Key
 
 from time import sleep
-from list_computers_and_rules_ips_output_all_clients_mod import *
-
 
 class CONST(object):
-    INFO_FILE = "info_client.txt"
+    INFO_FILE = "info_clientes_mod.txt"
 
     def __setattr__(self, *_):
         pass
@@ -22,8 +20,6 @@ class MainChangeApiFile:
 
 	def add_api(self):
 		
-		# info_file = CONST.INFO_FILE
-
 		print("Escrever File -> {} [Y/N]".format(CONST.INFO_FILE))
 		i = input(str(": "))
 
@@ -152,25 +148,6 @@ class MainChangeApiFile:
 				print(e)
 				sleep(5)
 
-	def generate_ds_standlone(self):
-		host, api_version = get_data()
-		print("File -> {} [Y/N]".format(CONST.INFO_FILE))
-		in0 = input(str(": "))
-
-
-		if in0.upper() == 'Y':
-			file = CONST.INFO_FILE
-			main(file)
-
-		elif in0.upper() == 'N':
-			in01 = input(str("Novo Arquivo: "))
-
-			try:
-				main(in01)
-
-			except Exception as e:
-				print(e)
-
 
 while True:
 
@@ -183,7 +160,6 @@ while True:
 
 			[c] - Change API KEY File
 			[d] - Add API KEY File
-			[g] - Generate DS Standlone
 
 
 			###############
@@ -203,6 +179,3 @@ while True:
 
 	elif entrada.lower() == 'c':
 		main.edit_api()
-
-	elif entrada.lower() == 'g':
-		main.generate_ds_standlone()
