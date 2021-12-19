@@ -179,3 +179,5 @@ while True:
 
 	elif entrada.lower() == 'c':
 		main.edit_api()
+                print("teste")
+                
